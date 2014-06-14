@@ -15,5 +15,3 @@ FOUNDATION_EXPORT double SWRouteVersionNumber;
 FOUNDATION_EXPORT const unsigned char SWRouteVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <SWRoute/PublicHeader.h>
-
-

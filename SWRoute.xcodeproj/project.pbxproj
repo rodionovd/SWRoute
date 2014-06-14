@@ -9,11 +9,21 @@
 /* Begin PBXBuildFile section */
 		0A940B1E194CEF5E00831127 /* SWRoute.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A940B1D194CEF5E00831127 /* SWRoute.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0A940B24194CEF5E00831127 /* SWRoute.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A940B18194CEF5E00831127 /* SWRoute.framework */; };
-		0A940B2B194CEF5E00831127 /* SWRouteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A940B2A194CEF5E00831127 /* SWRouteTests.swift */; };
+		0A940B35194CEF8400831127 /* SWRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A940B34194CEF8400831127 /* SWRoute.swift */; };
+		0A940B3A194CEFB800831127 /* rd_route.c in Sources */ = {isa = PBXBuildFile; fileRef = 0A940B38194CEFB800831127 /* rd_route.c */; };
+		0A940B3B194CEFB800831127 /* rd_route.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A940B39194CEFB800831127 /* rd_route.h */; };
+		0A940B3E194CEFE800831127 /* rd_get_func_impl.c in Sources */ = {isa = PBXBuildFile; fileRef = 0A940B3D194CEFE800831127 /* rd_get_func_impl.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		0A940B25194CEF5E00831127 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0A940B0F194CEF5E00831127 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0A940B17194CEF5E00831127;
+			remoteInfo = SWRoute;
+		};
+		0A940B3F194CF17600831127 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0A940B0F194CEF5E00831127 /* Project object */;
 			proxyType = 1;
@@ -29,6 +39,10 @@
 		0A940B23194CEF5E00831127 /* SWRouteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SWRouteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A940B29194CEF5E00831127 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A940B2A194CEF5E00831127 /* SWRouteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWRouteTests.swift; sourceTree = "<group>"; };
+		0A940B34194CEF8400831127 /* SWRoute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWRoute.swift; sourceTree = "<group>"; };
+		0A940B38194CEFB800831127 /* rd_route.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = rd_route.c; path = rd_route/rd_route.c; sourceTree = SOURCE_ROOT; };
+		0A940B39194CEFB800831127 /* rd_route.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rd_route.h; path = rd_route/rd_route.h; sourceTree = SOURCE_ROOT; };
+		0A940B3D194CEFE800831127 /* rd_get_func_impl.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rd_get_func_impl.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,7 +85,10 @@
 		0A940B1A194CEF5E00831127 /* SWRoute */ = {
 			isa = PBXGroup;
 			children = (
+				0A940B34194CEF8400831127 /* SWRoute.swift */,
+				0A940B3D194CEFE800831127 /* rd_get_func_impl.c */,
 				0A940B1D194CEF5E00831127 /* SWRoute.h */,
+				0A940B3C194CEFBF00831127 /* rd_route */,
 				0A940B1B194CEF5E00831127 /* Supporting Files */,
 			);
 			path = SWRoute;
@@ -102,6 +119,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		0A940B3C194CEFBF00831127 /* rd_route */ = {
+			isa = PBXGroup;
+			children = (
+				0A940B38194CEFB800831127 /* rd_route.c */,
+				0A940B39194CEFB800831127 /* rd_route.h */,
+			);
+			name = rd_route;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -109,6 +135,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A940B3B194CEFB800831127 /* rd_route.h in Headers */,
 				0A940B1E194CEF5E00831127 /* SWRoute.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -146,6 +173,7 @@
 			);
 			dependencies = (
 				0A940B26194CEF5E00831127 /* PBXTargetDependency */,
+				0A940B40194CF17600831127 /* PBXTargetDependency */,
 			);
 			name = SWRouteTests;
 			productName = SWRouteTests;
@@ -210,6 +238,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A940B3E194CEFE800831127 /* rd_get_func_impl.c in Sources */,
+				0A940B35194CEF8400831127 /* SWRoute.swift in Sources */,
+				0A940B3A194CEFB800831127 /* rd_route.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,7 +248,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A940B2B194CEF5E00831127 /* SWRouteTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,6 +258,11 @@
 			isa = PBXTargetDependency;
 			target = 0A940B17194CEF5E00831127 /* SWRoute */;
 			targetProxy = 0A940B25194CEF5E00831127 /* PBXContainerItemProxy */;
+		};
+		0A940B40194CF17600831127 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0A940B17194CEF5E00831127 /* SWRoute */;
+			targetProxy = 0A940B3F194CF17600831127 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -316,6 +351,7 @@
 		0A940B2F194CEF5E00831127 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -327,12 +363,14 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		0A940B30194CEF5E00831127 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;

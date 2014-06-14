@@ -7,29 +7,50 @@
 //
 
 import XCTest
+import SWRoute
+
+class DemoClass {
+    func demoMethod(arg: Int) -> Int {
+        return (42 + arg);
+    }
+}
 
 class SWRouteTests: XCTestCase {
-    
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-    
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
-    
-    func testExample() {
-        // This is an example of a functional test case.
-        XCTAssert(true, "Pass")
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock() {
-            // Put the code you want to measure the time of here.
+
+    func testSWRoute() {
+
+        /* Preconditions */
+        let arg = 13
+        XCTAssert(DemoClass().demoMethod(arg) == (42 + arg), "", file: __FILE__, line: __LINE__)
+
+        /*
+        * Replacing the method with a custom closure
+        */
+        var err = SwiftRoute.replace(function: DemoClass().demoMethod, with: {
+            (arg : Int) -> Int in
+            return (90 + arg)
+            })
+        XCTAssert(err == Int(KERN_SUCCESS), "", file: __FILE__, line: __LINE__)
+        XCTAssert(DemoClass().demoMethod(arg) == (90 + arg), "", file: __FILE__, line: __LINE__)
+
+        /*
+        * Replacing the method with a function
+        */
+        func replacement(arg : Int) -> Int {
+            return (567 - arg);
         }
+        err = SwiftRoute.replace(function: DemoClass().demoMethod, with: replacement)
+        XCTAssert(err == Int(KERN_SUCCESS), "", file: __FILE__, line: __LINE__)
+        XCTAssert(DemoClass().demoMethod(arg) == (567 - arg), "", file: __FILE__, line: __LINE__)
+
+        /*
+        * Replacing a function with another function
+        */
+        func target(arg : Int) -> Int {
+            return 0;
+        }
+        err = SwiftRoute.replace(function: target, with: replacement)
+        XCTAssert(err == Int(KERN_SUCCESS), "", file: __FILE__, line: __LINE__)
+        XCTAssert(target(arg) == (567 - arg), "", file: __FILE__, line: __LINE__)
     }
-    
 }
