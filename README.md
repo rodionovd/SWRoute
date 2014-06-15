@@ -4,7 +4,7 @@
 
 ```haskell
 class SwiftRoute {
-    class func replace<MethodT, MethodQ>(function targetMethod : MethodT, with replacement : MethodQ) -> Int
+    class func replace<MethodT>(function targetMethod : MethodT, with replacement : MethodT) -> Int
 }
 ```
 

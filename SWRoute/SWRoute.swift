@@ -14,7 +14,7 @@ import Darwin
     func rd_route(UInt64, UInt64, CMutablePointer<UInt64>) -> CInt;
 
 class SwiftRoute {
-    class func replace<MethodT, MethodQ>(function targetMethod : MethodT, with replacement : MethodQ) -> Int
+    class func replace<MethodT>(function targetMethod : MethodT, with replacement : MethodT) -> Int
     {
         // @todo: what can we do with a duplicate of the original function?
         return Int(rd_route(rd_get_func_impl(targetMethod), rd_get_func_impl(replacement), nil));
