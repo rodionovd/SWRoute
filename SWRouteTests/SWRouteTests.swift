@@ -21,7 +21,7 @@ class SWRouteTests: XCTestCase {
 
         /* Preconditions */
         let arg = 13
-        XCTAssert(DemoClass().demoMethod(arg) == (42 + arg), "", file: __FILE__, line: __LINE__)
+        XCTAssert(DemoClass().demoMethod(arg) == (42 + arg))
 
         /*
         * Replacing the method with a custom closure
@@ -30,8 +30,8 @@ class SWRouteTests: XCTestCase {
             (arg : Int) -> Int in
             return (90 + arg)
             })
-        XCTAssert(err == Int(KERN_SUCCESS), "", file: __FILE__, line: __LINE__)
-        XCTAssert(DemoClass().demoMethod(arg) == (90 + arg), "", file: __FILE__, line: __LINE__)
+        XCTAssert(err == Int(KERN_SUCCESS))
+        XCTAssert(DemoClass().demoMethod(arg) == (90 + arg))
 
         /*
         * Replacing the method with a function
@@ -40,8 +40,8 @@ class SWRouteTests: XCTestCase {
             return (567 - arg);
         }
         err = SwiftRoute.replace(function: DemoClass().demoMethod, with: replacement)
-        XCTAssert(err == Int(KERN_SUCCESS), "", file: __FILE__, line: __LINE__)
-        XCTAssert(DemoClass().demoMethod(arg) == (567 - arg), "", file: __FILE__, line: __LINE__)
+        XCTAssert(err == Int(KERN_SUCCESS))
+        XCTAssert(DemoClass().demoMethod(arg) == (567 - arg))
 
         /*
         * Replacing a function with another function
@@ -50,7 +50,7 @@ class SWRouteTests: XCTestCase {
             return 0;
         }
         err = SwiftRoute.replace(function: target, with: replacement)
-        XCTAssert(err == Int(KERN_SUCCESS), "", file: __FILE__, line: __LINE__)
-        XCTAssert(target(arg) == (567 - arg), "", file: __FILE__, line: __LINE__)
+        XCTAssert(err == Int(KERN_SUCCESS))
+        XCTAssert(target(arg) == (567 - arg))
     }
 }
