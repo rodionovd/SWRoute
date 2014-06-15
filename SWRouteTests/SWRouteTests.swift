@@ -28,8 +28,8 @@ class SWRouteTests: XCTestCase {
         */
         var err = SwiftRoute.replace(function: DemoClass().demoMethod, with: {
             (arg : Int) -> Int in
-            return (90 + arg)
-            })
+                return (90 + arg)
+        })
         XCTAssert(err == Int(KERN_SUCCESS))
         XCTAssert(DemoClass().demoMethod(arg) == (90 + arg))
 
