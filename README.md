@@ -41,6 +41,22 @@ XCTAssert(DemoClass().demoMethod(arg) == (90 + arg), "", file: __FILE__, line: _
 
 ```
 
+## SWRoute and iOS  
+
+Unfortunately `rd_route` (the back-end of `SWRoute`) doesn't work well on iOS (until jailbroken), because it does some tricks with memory pages that aren't allowed there. But you can choose any other library for function hooking instead!  I recommend [`libevil`](https://github.com/landonf/libevil_patch) by Landon Fuller:  
+
+```haskell
+@asmname("evil_init")
+    func evil_init();
+@asmname("evil_override_ptr")
+    func evil_override_ptr(UInt64, UInt64, CMutablePointer<UInt64>) -> CInt;
+
+evil_init()
+evil_override_ptr(rd_get_func_impl(DemoClass().demoMethod,
+                  rd_get_func_impl(someFunction),
+                  nil)
+```
+
 ------
 
 If you found any bug(s) or something, please open an issue or a pull request — I'd appreciate your help! `(^,,^)`
