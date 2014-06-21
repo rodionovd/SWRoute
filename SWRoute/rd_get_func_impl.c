@@ -9,18 +9,22 @@
 
 #include <stdint.h>
 
-#define kObjectFieldOffset 0x8
+#define kObjectFieldOffset sizeof(uintptr_t)
 
 struct swift_func_object {
-    uint64_t *original_type_ptr;
-    uint64_t *unknown0;
-    uint64_t function_address;
-    uint64_t *self;
+    uintptr_t *original_type_ptr;
+#if defined(__x86_64__)
+    uintptr_t *unknown0;
+#else
+    uintptr_t *unknown0, *unknown1;
+#endif
+    uintptr_t function_address;
+    uintptr_t *self;
 };
 
-uint64_t _rd_get_func_impl(void *func)
+uintptr_t _rd_get_func_impl(void *func)
 {
-    struct swift_func_object *obj = (struct swift_func_object *)*(uint64_t *)(func + kObjectFieldOffset);
+    struct swift_func_object *obj = (struct swift_func_object *)*(uintptr_t *)(func + kObjectFieldOffset);
 
     return obj->function_address;
 }

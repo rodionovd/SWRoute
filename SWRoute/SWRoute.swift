@@ -10,9 +10,9 @@
 import Darwin
 
 @asmname("_rd_get_func_impl")
-    func rd_get_func_impl<Q>(Q) -> UInt64;
+    func rd_get_func_impl<Q>(Q) -> uintptr_t;
 @asmname("rd_route")
-    func rd_route(UInt64, UInt64, CMutablePointer<UInt64>) -> CInt;
+    func rd_route(uintptr_t, uintptr_t, CMutablePointer<uintptr_t>) -> CInt;
 
 class SwiftRoute {
     class func replace<MethodT>(function targetMethod : MethodT, with replacement : MethodT) -> Int
