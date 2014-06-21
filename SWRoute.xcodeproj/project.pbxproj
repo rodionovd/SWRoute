@@ -13,6 +13,7 @@
 		0A940B3A194CEFB800831127 /* rd_route.c in Sources */ = {isa = PBXBuildFile; fileRef = 0A940B38194CEFB800831127 /* rd_route.c */; };
 		0A940B3B194CEFB800831127 /* rd_route.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A940B39194CEFB800831127 /* rd_route.h */; };
 		0A940B3E194CEFE800831127 /* rd_get_func_impl.c in Sources */ = {isa = PBXBuildFile; fileRef = 0A940B3D194CEFE800831127 /* rd_get_func_impl.c */; };
+		0AC4CCE1195598330053E665 /* SWRouteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A940B2A194CEF5E00831127 /* SWRouteTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -248,6 +249,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0AC4CCE1195598330053E665 /* SWRouteTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -438,6 +440,7 @@
 				0A940B30194CEF5E00831127 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0A940B31194CEF5E00831127 /* Build configuration list for PBXNativeTarget "SWRouteTests" */ = {
 			isa = XCConfigurationList;
@@ -446,6 +449,7 @@
 				0A940B33194CEF5E00831127 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
