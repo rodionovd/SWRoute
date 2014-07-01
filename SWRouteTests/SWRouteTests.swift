@@ -17,7 +17,7 @@ class DemoClass {
 
 class SWRouteTests: XCTestCase {
 
-    func testSWRoute() {
+    func testRouting() {
 
         /* Preconditions */
         let arg = 13
@@ -52,5 +52,24 @@ class SWRouteTests: XCTestCase {
         err = SwiftRoute.replace(function: target, with: replacement)
         XCTAssert(err == Int(KERN_SUCCESS))
         XCTAssert(target(arg) == (567 - arg))
+    }
+
+    func testKeepingOriginalImplementation() {
+
+        func target(arg: Int) -> String {
+            return "This is \(arg)"
+        }
+        func replacement(arg: Int) -> String {
+            return "This is \(arg-40)"
+        }
+
+        var original_imp:uintptr_t = 0;
+        let err = withUnsafePointer(&original_imp) {
+            (pointer: UnsafePointer<uintptr_t>) -> (Int) in
+            return SwiftRoute.replace(function: target, with: replacement, originalImp: pointer);
+        }
+        XCTAssert(err == Int(KERN_SUCCESS))
+        XCTAssert(target(40) == replacement(40))
+        XCTAssert(original_imp != 0);
     }
 }

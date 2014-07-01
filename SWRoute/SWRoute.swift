@@ -12,12 +12,14 @@ import Darwin
 @asmname("_rd_get_func_impl")
     func rd_get_func_impl<Q>(Q) -> uintptr_t;
 @asmname("rd_route")
-    func rd_route(uintptr_t, uintptr_t, CMutablePointer<uintptr_t>) -> CInt;
+    func rd_route(uintptr_t, uintptr_t, UnsafePointer<uintptr_t>) -> CInt;
 
 class SwiftRoute {
-    class func replace<MethodT>(function targetMethod : MethodT, with replacement : MethodT) -> Int
+    class func replace<MethodT>(function targetMethod : MethodT,
+                                     with replacement : MethodT,
+                                          originalImp : UnsafePointer<uintptr_t> = nil) -> Int
     {
-        // @todo: what can we do with a duplicate of the original function?
-        return Int(rd_route(rd_get_func_impl(targetMethod), rd_get_func_impl(replacement), nil));
+        let err = rd_route(rd_get_func_impl(targetMethod), rd_get_func_impl(replacement), originalImp);
+        return Int(err);
     }
 }
