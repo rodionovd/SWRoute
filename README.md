@@ -6,7 +6,7 @@ If you're curious how it works, check out an article [„Function hooking in Swi
 
 #### Exported interface  
 
-```haskell
+```swift
 class SwiftRoute {
     class func replace<MethodT>(function targetMethod : MethodT, with replacement : MethodT) -> Int
 }
@@ -27,7 +27,7 @@ class SwiftRoute {
 ##### Example usage
 (see `SWRouteTests/SWRouteTests.swift` for more)  
 
-```haskell
+```swift
 class DemoClass {
     func demoMethod(arg: Int) -> Int {
         return (42 + arg);
@@ -38,8 +38,6 @@ var err = SwiftRoute.replace(function: DemoClass().demoMethod, with: {
     (arg : Int) -> Int in
         return (90 + arg)
 })
-XCTAssert(err == Int(KERN_SUCCESS), "", file: __FILE__, line: __LINE__)
-XCTAssert(DemoClass().demoMethod(arg) == (90 + arg), "", file: __FILE__, line: __LINE__)
 
 ```
 
@@ -49,10 +47,8 @@ Unfortunately `rd_route` (the back-end of `SWRoute`) doesn't work well on iOS (u
 
 You'll only need `rd_get_func_impl.c` source file included into your project to create your version of SWRoute:  
 
-```haskell
---
--- Route functions in Swift using libevil and rd_get_func_impl()
---
+```swift
+// Route functions in Swift using libevil and rd_get_func_impl()
 import Darwin
 
 @asmname("_rd_get_func_impl")
