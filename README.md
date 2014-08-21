@@ -1,4 +1,6 @@
 `SWRoute` is a tiny Swift wrapper over [`rd_route()`](https://github.com/rodionovd/rd_route). It allows you to route (hook) quite any function/method with another function/method or even a closure.  
+
+**This code hasn't been updated since Xcode beta 1, so it may be outdated. Remember, it's just a proof-of-concept of what you can do in Swift.**  
   
 If you're curious how it works, check out an article [„Function hooking in Swift“](https://github.com/rodionovd/SWRoute/wiki/Function-hooking-in-Swift).  
 
